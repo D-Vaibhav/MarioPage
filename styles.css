@@ -1,0 +1,302 @@
+body, h1, h2, a, ul, li{
+    margin: 0px;
+    padding: 0px;
+    font-family: arial;
+}
+
+header{
+    background-color: rgb(253, 20, 4);
+    border: 1px solid black;
+    padding: 7px;
+    /* fixed position go inside the absolute postion on scrolling */
+    position: fixed;
+    top:0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    /* default z-index is 0 for all the other css property */
+    z-index: 1;
+}
+
+header h1{
+    color: white;
+    border: 8px solid white;
+    /* padding: top-bottom , left-right */
+    padding: 6px 40px;
+    /* we use inline-block so that we can take control of  the padding and make them inline as well */
+    display: inline-block;
+    border-radius:50px;
+}
+.banner{
+    position: relative;
+}
+
+/* use % -> to make changes dynamic and values to make changes static */
+.banner img{
+    max-width: 100%;
+}
+
+/* to change any position in inner tag,the parent tag must have a non static position */
+/* in absolute we take that element space out of the document flow and it loses it's space in page that it was previously holding */
+.banner .welcome{
+    position: absolute;
+    left: 0;
+    top: 30%;
+    background-color: #feb614;
+    color: white;
+    padding: 30px;
+}
+
+.banner h2{
+    font-size: 35px;
+}
+
+.banner h2 span{
+    /* em is used to multiply value to its parent's respective property */
+    font-size: 1.3em;
+}
+
+nav{
+    background-color: lightgray;
+    padding: 10px;
+    /* sticky will work as fixed until it reaches its side threshold value */
+    position: sticky;
+    top: 80px;
+    width: 100%;
+}
+
+nav ul{
+    /* avoding wrapping to the next line */
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0px auto ;
+}
+
+nav li{
+    display: inline-block;
+    padding: 0 20px;
+    width: 25%;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.main-nav a{
+    text-decoration: none;
+}
+
+.main-nav .join{
+    color: rgb(245, 4, 4);
+    text-decoration: underline;
+}
+
+main{
+    max-width: 100%;
+    /* to control position use margin and width */
+    width: 1200px;
+    /* top-bottom & left-right */
+    margin: 70px auto;  
+    padding: 0px 40px;
+    /* to control the text going out of the page */
+    box-sizing: border-box;
+}
+
+article h2{
+    font-size: 27px;
+}
+
+article p{
+    /* spacing between the lines */
+    margin-top: 7px;
+    line-height: 1.2em;
+    color: #4b4b4b;
+}
+
+.images{
+    text-align: center;
+    margin: 80px 0px;
+    white-space: nowrap;
+}
+
+.images li{
+    display: inline-block;
+    width: 40%;
+    margin: 10px 5%;
+    /* this makes totally 50% width for a single img */
+}
+
+.images li img{
+    max-width: 100%;
+    /* that makes 100% to its parent thats li which is 40% of  its parent */
+}
+
+.join-form{
+    background-color: silver;
+    text-align: center;
+    padding: 0px 20px;
+    padding-top: 11px;
+    padding-bottom: 0px;
+}
+
+.join-form h2{
+    font-size: 34;
+}
+
+.join-form p{
+    margin: 9px;
+    margin-top: 0px;
+    font-size: 15px;
+}
+
+form{
+    margin-bottom: 0px;
+}
+
+form input{
+    margin: 15px 0px;
+    padding: 7px 21px;
+    margin-top: 0px;
+    border: 4px solid white;
+    border-radius: 36px;
+    font-size: 15px;
+    outline: none;
+}
+
+form input[placeholder]{
+    text-align: center;
+}
+
+footer p{
+    border: 1px solid black;   
+    background-color: rgba(19, 83, 56, 0.336);
+    margin: 0px;
+    text-align: right;
+}
+
+/* pseudo classes */
+/* we use : to access pseudo class of the css poperty */
+.main-nav a:hover{
+    text-decoration: underline;
+}
+
+.images li:hover{
+    /* change to absolute then see magic  */
+    position: relative;
+    /* it means move towards to by 5 px but will work only if the position: relative */
+    top: -5px;
+}
+
+form input:focus{
+    border: 1px dashed black;
+    background-color: rgb(247, 10, 10);
+}
+
+form input:valid{
+    border: 4px solid rgb(112, 172, 24);
+    background-color: rgb(151, 216, 54);
+}
+
+/* pseudo elements are like classes to make content dynamic */
+article p::first-line{
+    font-weight: 7px;
+    font-size: 1.2em;
+}
+
+.join-form p::selection{
+    color: yellow;
+    background-color: sandybrown;
+}
+
+p::after{
+    content: '.....';
+}
+
+/* media query for responsive page design */
+/* this has to be either more specific or equally specific else wont be applied */
+
+
+@media screen and (max-width: 400px){
+
+    body, h1, h2, ul, li, a, header{
+        padding: 0px;
+        margin: 0px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header h1{
+        font-size: 27px;
+        border: 4px solid white;
+        margin: 5px;
+        padding: 1px 20px;
+    }
+
+    .banner .welcome{
+        position: relative;
+        padding: 2px;
+    }
+
+    .banner h2{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* to take control over the tag just use display */
+    .banner h2 br{
+        display: none;
+    }
+
+    .banner h2 span{
+        font-size: 1.2em;
+    }
+
+    nav{
+        padding: 5px;
+        /* sticky will work as fixed until it reaches its side threshold value */
+        position: sticky;
+        top: 50px;
+        width: 100%;
+    }
+    
+    nav li{
+        display: inline;
+        padding: 0 2px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    main{
+        margin: 21px auto;  
+        padding: 0px 40px;
+        /* to control the text going out of the page */
+        box-sizing: border-box;
+    }
+
+    article h2{
+        font-size: 15px;
+    }
+    
+    main article h2{
+        font-size: 20px;
+    }
+
+    main article p{
+        font-size: 15px;
+    }
+
+    .images {
+        text-align: center;
+        margin: 30px 0px;
+        white-space: nowrap;
+    }
+    
+    .images li{
+        display: block;
+        width: 90%;
+        margin-left: 30%;
+        margin: 10px 5%;
+    }
+
+    .images li:hover{
+        position: relative;
+        left: -5px;
+    }
+}
